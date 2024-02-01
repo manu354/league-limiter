@@ -1,0 +1,7 @@
+sendgrid.env
+test.db
+*.pyc
+*.sql
+.vscode
+__pycache__
+```
