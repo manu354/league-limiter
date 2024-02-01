@@ -1,4 +1,5 @@
 from datetime import datetime, timezone, timedelta
+import os
 import leagueAPI
 from flask import Flask, send_from_directory
 from newUser import *
@@ -24,11 +25,12 @@ def new_user_route():
     return new_user()
 
 if __name__ == '__main__':
-    check_breaches();
+    # check_breaches();
     schedule.every(1).minutes.do(check_breaches)
 
     t = threading.Thread(target=run_schedule)
     t.start()
 
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+
 
